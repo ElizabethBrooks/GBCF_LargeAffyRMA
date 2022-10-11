@@ -13,18 +13,21 @@ workingDir = args[1];
 setwd(workingDir)
 
 # install packages
-if (!require("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("oligo")
-install.packages("ff")
+#install.packages("RCurl")
+#install.packages("ff")
+#if (!require("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
+#BiocManager::install("oligo")
 
 # load libraries
 library(oligo)
-library(ff)
-ldPath()
+#library(ff)
+
+# set large data path for ff files
+#ldPath()
 
 # target CEL files
-celFiles <- list.celfiles(workingDir, full.names=TRUE)
+celFiles <- list.files(workingDir, full.names=TRUE)
 
 # read CEL files
 rawData <- read.celfiles(celFiles)
