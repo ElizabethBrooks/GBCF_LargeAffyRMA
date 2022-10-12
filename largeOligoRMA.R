@@ -1,9 +1,10 @@
 #!/usr/bin/env Rscript
 
-# script to identify set-specific and consensos modules
-# usage: Rscript largeAffyRMA.R workingDir
-# usage ex: Rscript largeAffyRMA.R /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6
+# script to RMA normalize newer affymetrix array data
+# usage: Rscript largeOligoRMA.R workingDir
+# usage ex: Rscript largeOligoRMA.R /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6
 
+# Windows systems
 #Sys.getenv('R_MAX_VSIZE')
 #Sys.setenv('R_MAX_VSIZE'=171GB)
 
@@ -33,19 +34,23 @@ library(oligo)
 celFiles <- list.files(workingDir, full.names=TRUE)
 
 # read CEL files
+#celFiles="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6/GSM2350873_A52084400939561101515421438861513.CEL.gz"
 rawData <- read.celfiles(celFiles)
 
 # RMA normalization
 rmaRes <- rma(rawData)
 
-# check out the results
+# look at the first 10 results
 exprs(rmaRes)[1:10,]
 
-# retrieve normalized expression
+# retrieve normalized expression set
 exprsData  <- exprs(rmaRes)
 
 # save the normalized expression data to a RData file
+#save(exprsData, file="test_normalized_RMA.RData")
 save(exprsData, file="normalized_RMA.RData")
 
 # write normalized expression to txt file
-write.exprs(exprsData, file="normalized_RMA.txt", sep="\t")
+#capture.output(exprsData, file="test_normalized_RMA.txt")
+capture.output(exprsData, file="normalized_RMA.txt")
+

@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# script to identify set-specific and consensos modules
+# script to RMA normalize older affymetrix array data
 # usage: Rscript largeAffyRMA.R workingDir
 # usage ex: Rscript largeAffyRMA.R /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6
 
