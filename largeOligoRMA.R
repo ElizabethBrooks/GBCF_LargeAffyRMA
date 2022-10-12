@@ -4,7 +4,10 @@
 # usage: Rscript largeAffyRMA.R workingDir
 # usage ex: Rscript largeAffyRMA.R /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6
 
-#Retrieve input file name of gene counts
+#Sys.getenv('R_MAX_VSIZE')
+#Sys.setenv('R_MAX_VSIZE'=171GB)
+
+# retrieve input file name of gene counts
 args = commandArgs(trailingOnly=TRUE)
 
 #Set working directory
