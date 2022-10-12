@@ -3,7 +3,7 @@
 #$ -m abe
 #$ -r n
 #$ -N largeOligoRMA_jobOutput
-#$ -pe smp 24
+#$ -pe smp 16
 
 # Script to run RMA normalization with the oligo R package using a minimum of 16 cores (171GB)
 # the raw data is 82GB total, and a vector is created during normalization that is about 162GB
