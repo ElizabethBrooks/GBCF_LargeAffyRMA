@@ -3,7 +3,11 @@
 #$ -m abe
 #$ -r n
 #$ -N largeOligoRMA_jobOutput
-#$ -pe smp 16
+#$ -pe smp 24
+
+# Script to run RMA normalization with the oligo R package using 16 cores
+# the raw data is 82GB total, and a matrix is created during normalization that is about 162GB
+# since each core has 10.7GB RAM available, slightly more than 15 cores are needed for the analysis
 
 # load the R v4 module
 module load R/4.2.1
