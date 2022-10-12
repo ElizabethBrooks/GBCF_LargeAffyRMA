@@ -35,5 +35,14 @@ rawData <- read.celfiles(celFiles)
 # RMA normalization
 rmaRes <- rma(rawData)
 
-# view top 10 DE genes
+# check out the results
 exprs(rmaRes)[1:10,]
+
+# retrieve normalized expression
+exprsData  <- exprs(rmaRes)
+
+# save the normalized expression data to a RData file
+save(exprsData, file="normalized_RMA.RData")
+
+# write normalized expression to txt file
+write.exprs(exprsData, file="normalized_RMA.txt", sep="\t")

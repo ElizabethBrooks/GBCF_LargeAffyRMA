@@ -3,6 +3,7 @@
 #$ -m abe
 #$ -r n
 #$ -N largeOligoRMA_jobOutput
+#$ -pe smp 16
 
 # load the R v4 module
 module load R/4.2.1
