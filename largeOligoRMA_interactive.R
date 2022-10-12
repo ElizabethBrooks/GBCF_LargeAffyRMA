@@ -1,16 +1,19 @@
 #!/usr/bin/env Rscript
 
 # script to RMA normalize newer affymetrix array data
-# usage: Rscript largeOligoRMA_interactive.R
-# make sure to request 16 cores using the following ND CRC server shell command
-# qrsh -pe smp 16
+# usage: Rscript largeOligoRMA.R workingDir
+# usage ex: Rscript largeOligoRMA.R /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6
 
 # Windows systems
 #Sys.getenv('R_MAX_VSIZE')
 #Sys.setenv('R_MAX_VSIZE'=171GB)
 
+# retrieve input file name of gene counts
+args = commandArgs(trailingOnly=TRUE)
+
 #Set working directory
-workingDir="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6"
+workingDir = args[1];
+#workingDir="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6"
 setwd(workingDir)
 
 # install packages
