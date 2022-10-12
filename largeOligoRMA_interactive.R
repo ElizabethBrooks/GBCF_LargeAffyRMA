@@ -12,8 +12,8 @@
 #Sys.setenv('R_MAX_VSIZE'=171GB)
 
 #Set working directory
-workingDir = args[1];
-#workingDir="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6"
+#workingDir = args[1];
+workingDir="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6"
 setwd(workingDir)
 
 # install packages
