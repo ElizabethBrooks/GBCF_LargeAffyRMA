@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 # script to RMA normalize newer affymetrix array data
-# usage: Rscript largeOligoRMA_interactive.R
+# usage: Rscript largeOligo_summarize_interactive.R
 
 # Windows systems
 #Sys.getenv('R_MAX_VSIZE')
@@ -33,20 +33,19 @@ celFiles <- list.files(workingDir, full.names=TRUE)
 #celFiles="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6/GSM2350873_A52084400939561101515421438861513.CEL.gz"
 rawData <- read.celfiles(celFiles)
 
-# RMA normalization
-rmaRes <- rma(rawData)
+# retrieve loaded expression values
+exprsData <- exprs(rawData)
 
-# look at the first 10 results
-exprs(rmaRes)[1:10,]
+# verify it is raw intensity data (e.g., max value of 65,536)
+maxExprs <- max(exprs(rawData))
 
-# retrieve normalized expression set
-exprsData  <- exprs(rmaRes)
+# write expression to txt file
+capture.output(maxExprs, file="maxExpression.txt")
 
-# save the normalized expression data to a RData file
-#save(exprsData, file="test_normalized_RMA.RData")
-save(exprsData, file="normalized_RMA.RData")
+# save the expression data to a RData file
+#save(exprsData, file="test_expression.RData")
+save(exprsData, file="expression.RData")
 
-# write normalized expression to txt file
-#capture.output(exprsData, file="test_normalized_RMA.txt")
-capture.output(exprsData, file="normalized_RMA.txt")
-
+# write expression to txt file
+#capture.output(exprsData, file="test_expression.txt")
+capture.output(exprsData, file="expression.txt")
