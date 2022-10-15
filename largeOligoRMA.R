@@ -13,7 +13,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 #Set working directory
 workingDir = args[1];
-#workingDir="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6"
+#workingDir="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6_CEL"
 setwd(workingDir)
 
 # install packages
@@ -34,7 +34,7 @@ library(oligo)
 celFiles <- list.files(workingDir, full.names=TRUE)
 
 # read CEL files
-#celFiles="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6/GSM2350873_A52084400939561101515421438861513.CEL.gz"
+#celFiles="/scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/GSE8888n_4_5_6_CEL/GSM2350873_A52084400939561101515421438861513.CEL.gz"
 rawData <- read.celfiles(celFiles)
 
 # RMA normalization
