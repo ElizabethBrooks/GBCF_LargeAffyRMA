@@ -22,7 +22,8 @@ setwd(workingDir)
 library(aroma.affymetrix)
 
 # parallel processing
-future::plan("multiprocess")
+future::plan("multicore")
+#future::plan("multisession")
 
 # job scheduler processing
 #future::plan(future.batchtools::batchtools_torque)
@@ -61,15 +62,21 @@ print(csN)
 plm <- RmaPlm(csN)
 print(plm)
 
+# actually fit the PLM to all of the data
+fit(plm, verbose=verbose)
+
 # extract the estimates
 ces <- getChipEffectSet(plm)
-gExprs <- extractDataFrame(ces, units=1:3, addNames=TRUE)
+gExprs <- extractDataFrame(ces, addNames=TRUE)
+head(gExprs)
+head(rownames(gExprs))
+head(colnames(gExprs))
 
 # save the normalized linear expression data to a RData file
 save(gExprs, file="normalizedLinear_RMA.RData")
 
-# write normalized linear expression to txt file
-capture.output(gExprs, file="normalizedLinear_RMA.txt")
+# write normalized linear expression to csv file
+write.csv(gExprs, file="normalizedLinear_RMA.csv", row.names=TRUE)
 
 # examine NUSE and RLE plots
 qam <- QualityAssessmentModel(plm)
@@ -81,3 +88,4 @@ dev.off()
 pdf(file="plmFit_RLE_RMA.pdf")
 plotRle(qam)
 dev.off()
+
