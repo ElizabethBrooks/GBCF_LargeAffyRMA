@@ -2,7 +2,7 @@
 #$ -M ebrooks5@nd.edu
 #$ -m abe
 #$ -r n
-#$ -N largeOligoRMA_jobOutput
+#$ -N largeAromaAffy_jobOutput
 #$ -pe smp 19
 
 # usage: qsub largeOligoRMA_driver.sh workingDir chipType celSet
@@ -28,4 +28,4 @@ chipType="$2"
 celSet="$3"
 
 # normalize all CEL files
-Rscript largeAromaAffy.R $workingDir $chipType $celSet
+Rscript largeAromaAffyRMA.R $workingDir $chipType $celSet
