@@ -2,7 +2,7 @@
 #$ -M ebrooks5@nd.edu
 #$ -m abe
 #$ -r n
-#$ -N setupAromaAffy_CEL_jobOutput
+#$ -N setupCEL_aromaAffy_jobOutput
 
 # usage: qsub largeAromaAffyRMA_setupCEL.sh workingDir celPath celDir chipType
 # usage ex: qsub largeAromaAffyRMA_setupCEL.sh /scratch365/ebrooks5 /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE8888n_4_5_6_CEL HTA-2_0

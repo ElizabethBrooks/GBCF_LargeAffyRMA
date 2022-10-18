@@ -2,7 +2,7 @@
 #$ -M ebrooks5@nd.edu
 #$ -m abe
 #$ -r n
-#$ -N setupAromaAffy_CDF_jobOutput
+#$ -N setupCDF_aromaAffy_jobOutput
 
 # usage: qsub largeAromaAffyRMA_setupCDF.sh workingDir cdfPath outputName
 # usage ex: qsub largeAromaAffyRMA_setupCDF.sh /scratch365/ebrooks5 /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/HTA-2_0.r1.gene.cdf HTA-2_0,r1,gene.cdf
