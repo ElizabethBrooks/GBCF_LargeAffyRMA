@@ -1,13 +1,23 @@
-# usage: qsub largeOligoRMA_driver.sh cdfPath
-# usage ex: qsub largeOligoRMA_driver.sh /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/HTA-2_0.r1.gene.cdf
+#!/bin/bash
+#$ -M ebrooks5@nd.edu
+#$ -m abe
+#$ -r n
+#$ -N setupAromaAffy_CDF_jobOutput
+
+# usage: qsub largeAromaAffyRMA_setupCDF.sh workingDir cdfPath
+# usage ex: qsub largeAromaAffyRMA_setupCDF.sh /afs/crc.nd.edu/group/genomics/PLAGUIES /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/HTA-2_0.r1.gene.cdf
+# usage ex: qsub largeAromaAffyRMA_setupCDF.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/HTA-2_0.r1.gene.cdf
+
+# set working directory
+workingDir="$1"
 
 # set input CDF path
-cdfPath="$1"
+cdfPath="$2"
 
 # make sure to make necessary directories
-mkdir "rma_aromaAffy/annotationData"
-mkdir "rma_aromaAffy/annotationData/chipTypes"
-mkdir "rma_aromaAffy/annotationData/chipTypes/HTA-2_0/"
+mkdir $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/annotationData"
+mkdir $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/annotationData/chipTypes"
+mkdir $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/annotationData/chipTypes/HTA-2_0/"
 
 # convert CDF file
 Rscript convertCDF_affxparser.R $cdfPath

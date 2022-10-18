@@ -2,13 +2,13 @@
 #$ -M ebrooks5@nd.edu
 #$ -m abe
 #$ -r n
-#$ -N largeOligoRMA_jobOutput
+#$ -N setupAromaAffy_CEL_jobOutput
 
-# usage: bash largeOligoRMA_driver.sh workingDir celDir 
-# usage ex: bash largeOligoRMA_driver.sh /afs/crc.nd.edu/group/genomics/PLAGUIES /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE8888n_4_5_6_CEL
-# usage ex: bash largeOligoRMA_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88884_CEL
-# usage ex: bash largeOligoRMA_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88885_CEL
-# usage ex: bash largeOligoRMA_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88886_CEL 
+# usage: qsub largeAromaAffyRMA_setupCEL.sh workingDir celDir 
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/PLAGUIES /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE8888n_4_5_6_CEL
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88884_CEL
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88885_CEL
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88886_CEL 
 
 # set working directory
 workingDir="$1"
@@ -26,7 +26,7 @@ mkdir $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/rawData"
 mkdir $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/rawData/"$celDir
 
 # make sure to move CEL files
-mv $celPath/$celDir $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/rawData/"$celDir
+mv $celPath/$celDir $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/rawData/"
 
 # unzip the gz CEL files
 gunzip $workingDir"/GBCF_bioinformatics_DxTerity/rma_aromaAffy/rawData/"$celDir"/"*".gz"
