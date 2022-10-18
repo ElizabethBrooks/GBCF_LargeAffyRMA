@@ -5,7 +5,7 @@
 #$ -N setupAromaAffy_CDF_jobOutput
 
 # usage: qsub largeAromaAffyRMA_setupCDF.sh workingDir cdfPath outputName
-# usage ex: qsub largeAromaAffyRMA_setupCDF.sh /afs/crc.nd.edu/group/genomics/PLAGUIES /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/HTA-2_0.r1.gene.cdf HTA-2_0,r1,gene.cdf
+# usage ex: qsub largeAromaAffyRMA_setupCDF.sh /scratch365/ebrooks5 /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/HTA-2_0.r1.gene.cdf HTA-2_0,r1,gene.cdf
 # usage ex: qsub largeAromaAffyRMA_setupCDF.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/HTA-2_0.r1.gene.cdf HTA-2_0,r1,gene.cdf
 
 # load the R v4 module
