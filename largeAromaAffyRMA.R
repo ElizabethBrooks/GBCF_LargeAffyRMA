@@ -76,7 +76,7 @@ head(colnames(gExprs))
 save(gExprs, file="normalizedLinear_RMA.RData")
 
 # write normalized linear expression to csv file
-write.csv(gExprs, file="normalizedLinear_RMA.csv", row.names=TRUE)
+write.csv(gExprs, file="normalizedLinear_RMA.csv", row.names=FALSE)
 
 # examine NUSE and RLE plots
 qam <- QualityAssessmentModel(plm)
