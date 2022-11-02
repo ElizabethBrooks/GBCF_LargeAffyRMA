@@ -73,19 +73,27 @@ head(rownames(gExprs))
 head(colnames(gExprs))
 
 # save the normalized linear expression data to a RData file
-save(gExprs, file="normalizedLinear_RMA.RData")
+exportFile <- paste("results/normalizedLinear_RMA", celSet, sep="_")
+exportFile <- paste(exportFile, "RData", sep=".")
+save(gExprs, file=exportFile)
 
 # write normalized linear expression to csv file
-write.csv(gExprs, file="normalizedLinear_RMA.csv", row.names=FALSE)
+exportFile <- paste("results/normalizedLinear_RMA", celSet, sep="_")
+exportFile <- paste(exportFile, "csv", sep=".")
+write.csv(gExprs, file=exportFile, row.names=FALSE)
 
 # examine NUSE and RLE plots
 qam <- QualityAssessmentModel(plm)
 # NUSE
-pdf(file="plmFit_NUSE_RMA.pdf")
+exportFile <- paste("results/plmFit_NUSE_RMA", celSet, sep="_")
+exportFile <- paste(exportFile, "pdf", sep=".")
+pdf(file=exportFile)
 plotNuse(qam)
 dev.off()
 # RLE
-pdf(file="plmFit_RLE_RMA.pdf")
+exportFile <- paste("results/plmFit_RLE_RMA", celSet, sep="_")
+exportFile <- paste(exportFile, "pdf", sep=".")
+pdf(file=exportFile)
 plotRle(qam)
 dev.off()
 
