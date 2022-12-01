@@ -2,7 +2,7 @@
 
 # script to log transform RMA normalized older affymetrix array data
 # usage: Rscript logTransformNormalizedCounts.r workingDir celSet
-# usage ex: Rscript logTransformNormalizedCounts.r /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity/rma_aromaAffy GSE8888n_4_5_6_CEL
+# usage ex: Rscript logTransformNormalizedCounts.r /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy GSE8888n_4_5_6_CEL
 
 # retrieve input file name of gene counts
 args = commandArgs(trailingOnly=TRUE)
@@ -20,7 +20,7 @@ library(dplyr)
 options(scipen = 999)
 
 # define CEL set
-celSet <- args[3]
+celSet <- args[2]
 #celSet <- "GSE8888n_4_5_6_CEL"
 
 # import normalized data
