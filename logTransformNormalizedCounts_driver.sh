@@ -27,6 +27,8 @@ numCols=$(($(head -1 $workingDir"/normalizedLinear_RMA_"$celSet".csv" | sed 's/,
 # loop over each column for each sample
 # the first 6 columns are summary data
 for i in $(seq 7 $numCols); do
+	# status message
+	echo "Transforming column $i ..."
 	# retrieve the sample column data
 	cut -d "," -f $i $workingDir"/normalizedLinear_RMA_"$celSet".csv" > $workingDir"/normalizedLinear_RMA_"$celSet"_col"$i".csv"
 	# perform log2 transformation of the column
@@ -38,8 +40,14 @@ cut -d , -f 1-6 $workingDir"/normalizedLinear_RMA_"$celSet".csv" > $workingDir"/
 
 # loop over each transformed column file for each sample and paste into one file
 for i in $(seq 7 $numCols); do
+	# status message
+	echo "Merging column $i ..."
+	# add trandformed data
 	paste -d , $workingDir"/normalizedLog_RMA_"$celSet".csv" $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv"
 	# clean up
 	rm $workingDir"/normalizedLinear_RMA_"$celSet"_col"$i".csv"
 	rm $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv"
 done
+
+# status message
+echo "Analysis complete!"
