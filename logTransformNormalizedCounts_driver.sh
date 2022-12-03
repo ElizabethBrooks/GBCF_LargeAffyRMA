@@ -1,4 +1,8 @@
 #!/bin/bash
+#$ -M ebrooks5@nd.edu
+#$ -m abe
+#$ -r n
+#$ -N transformRMA_jobOutput
 
 # BASH script to subset columns of normalized data and perform log transformation
 
