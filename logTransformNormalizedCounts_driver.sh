@@ -9,7 +9,7 @@ module load bio
 workingDir="/afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy/results"
 
 # define CEL set
-celSet <- "GSE8888n_4_5_6_CEL"
+celSet="GSE8888n_4_5_6_CEL"
 
 # set the number of samples
 #numSamples=3146
