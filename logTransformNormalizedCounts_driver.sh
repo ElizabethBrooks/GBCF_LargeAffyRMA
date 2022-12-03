@@ -28,26 +28,25 @@ celSet="$2"
 # set the number of columns
 numCols=$(($(head -1 $workingDir"/normalizedLinear_RMA_"$celSet".csv" | sed 's/,/,\n/g' | grep "," | wc -l)+1))
 
+# check message
+echo "The number of samples to process is $(($numCols-6))."
+
+# add summary data to the transformed data file
+cut -d , -f 1-6 $workingDir"/normalizedLinear_RMA_"$celSet".csv" > $workingDir"/normalizedLog_RMA_"$celSet".csv"
+
 # loop over each column for each sample
 # the first 6 columns are summary data
 for i in $(seq 7 $numCols); do
 	# status message
-	echo "Transforming column $i ..."
+	echo "Transforming column $i..."
 	# retrieve the sample column data
 	cut -d "," -f $i $workingDir"/normalizedLinear_RMA_"$celSet".csv" > $workingDir"/normalizedLinear_RMA_"$celSet"_col"$i".csv"
 	# perform log2 transformation of the column
 	Rscript logTransformNormalizedCounts.r $workingDir $celSet col$i
 	# clean up
 	rm $workingDir"/normalizedLinear_RMA_"$celSet"_col"$i".csv"
-done
-
-# add summary data to the transformed data file
-cut -d , -f 1-6 $workingDir"/normalizedLinear_RMA_"$celSet".csv" > $workingDir"/normalizedLog_RMA_"$celSet".csv"
-
-# loop over each transformed column file for each sample and paste into one file
-for i in $(seq 7 $numCols); do
 	# status message
-	echo "Merging column $i ..."
+	echo "Merging column $i..."
 	# add trandformed data
 	paste -d , $workingDir"/normalizedLog_RMA_"$celSet".csv" <(cut -d "," -f 2 $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv")
 	# clean up
