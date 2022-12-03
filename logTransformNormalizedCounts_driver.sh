@@ -48,7 +48,9 @@ for i in $(seq 7 $numCols); do
 	# status message
 	echo "Merging column $i..."
 	# add trandformed data
-	paste -d , $workingDir"/normalizedLog_RMA_"$celSet".csv" $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv"
+	paste -d , $workingDir"/normalizedLog_RMA_"$celSet".csv" $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv" > $workingDir"/tmp_normalizedLog_RMA_"$celSet".csv"
+	# overwrite using the tmp copy for pasting
+	mv $workingDir"/tmp_normalizedLog_RMA_"$celSet".csv" $workingDir"/normalizedLog_RMA_"$celSet".csv"
 	# clean up
 	rm $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv"
 done
