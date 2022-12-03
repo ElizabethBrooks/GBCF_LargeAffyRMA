@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# BASH script to subset columns of normalized data
+# BASH script to subset columns of normalized data and perform log transformation
 
-# usage: bash logTransformNormalizedCounts_driver.sh workingDir celSet
-# usage ex: bash logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy/results GSE8888n_4_5_6_CEL
-# usage ex: bash logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity/rma_aromaAffy/results GSE88884_CEL
-# usage ex: bash logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity/rma_aromaAffy/results GSE88885_CEL
-# usage ex: bash logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity/rma_aromaAffy/results GSE88886_CEL
-# usage ex: bash logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity_test/rma_aromaAffy/results GSE88886_CEL
+# usage: qsub logTransformNormalizedCounts_driver.sh workingDir celSet
+# usage ex: qsub logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy/results GSE8888n_4_5_6_CEL
+# usage ex: qsub logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity/rma_aromaAffy/results GSE88884_CEL
+# usage ex: qsub logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity/rma_aromaAffy/results GSE88885_CEL
+# usage ex: qsub logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity/rma_aromaAffy/results GSE88886_CEL
+# usage ex: qsub logTransformNormalizedCounts_driver.sh /afs/crc.nd.edu/group/genomics/SCARIF/GBCF_bioinformatics_DxTerity_test/rma_aromaAffy/results GSE88886_CEL
 
 
 # load necessary software
