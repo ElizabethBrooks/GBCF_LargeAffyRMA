@@ -44,4 +44,4 @@ exportFile <- paste(exportFile, "csv", sep=".")
 outputCounts <- log2(inputCounts+1)
 
 # write log transformed counts to a file
-write.csv(outputCounts, file=exportFile)
+write.csv(outputCounts, file=exportFile, row.names=FALSE)
