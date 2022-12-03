@@ -33,6 +33,8 @@ for i in $(seq 7 $numCols); do
 	cut -d "," -f $i $workingDir"/normalizedLinear_RMA_"$celSet".csv" > $workingDir"/normalizedLinear_RMA_"$celSet"_col"$i".csv"
 	# perform log2 transformation of the column
 	Rscript logTransformNormalizedCounts.r $workingDir $celSet col$i
+	# clean up
+	rm $workingDir"/normalizedLinear_RMA_"$celSet"_col"$i".csv"
 done
 
 # add summary data to the transformed data file
@@ -43,9 +45,8 @@ for i in $(seq 7 $numCols); do
 	# status message
 	echo "Merging column $i ..."
 	# add trandformed data
-	paste -d , $workingDir"/normalizedLog_RMA_"$celSet".csv" $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv"
+	paste -d , $workingDir"/normalizedLog_RMA_"$celSet".csv" <(cut -d "," -f 2 $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv")
 	# clean up
-	rm $workingDir"/normalizedLinear_RMA_"$celSet"_col"$i".csv"
 	rm $workingDir"/normalizedLog_RMA_"$celSet"_col"$i".csv"
 done
 
