@@ -90,6 +90,7 @@ exportFile <- paste(exportFile, "pdf", sep=".")
 pdf(file=exportFile)
 plotNuse(qam)
 dev.off()
+
 # RLE
 exportFile <- paste("results/plmFit_RLE_RMA", celSet, sep="_")
 exportFile <- paste(exportFile, "pdf", sep=".")
