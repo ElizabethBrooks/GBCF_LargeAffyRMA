@@ -29,7 +29,7 @@ celSet="$2"
 numCols=$(($(head -1 $workingDir"/normalizedLinear_RMA_"$celSet".csv" | sed 's/,/,\n/g' | grep "," | wc -l)+1))
 
 # check message
-echo "The number of samples to process is $(($numCols-6))."
+echo "The number of samples to process is $(($numCols-6))"
 
 # add summary data to the transformed data file
 cut -d , -f 1-6 $workingDir"/normalizedLinear_RMA_"$celSet".csv" | sed 's/"//g' > $workingDir"/normalizedLog_RMA_"$celSet".csv"
