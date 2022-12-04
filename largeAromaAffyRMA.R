@@ -108,7 +108,6 @@ gExprsMatrixLog <- log2(gExprsMatrix)
 
 # convert to a data frame
 gExprsLog <- as.data.frame(gExprsMatrixLog)
-rownames(gExprsLog) <- rownames(gExprs[,1])
 
 # write normalized log transformed expression to csv file
 exportFile <- paste("results/normalizedLogTransformed_RMA", celSet, sep="_")
