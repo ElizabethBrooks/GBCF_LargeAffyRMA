@@ -38,13 +38,13 @@ verbose <- Arguments$getVerbose(-8, timestamp=TRUE)
 chipType <- args[2]
 #chipType <- "HTA-2_0"
 cdf <- AffymetrixCdfFile$byChipType(chipType, tags=c("r1", "gene"))
-print(cdf)
+#print(cdf)
 
 # define CEL set
 celSet <- args[3]
 #celSet <- "GSE8888n_4_5_6_CEL"
 cs <- AffymetrixCelSet$byName(celSet, cdf=cdf)
-print(cs)
+#print(cs)
 
 # background adjustment and normalization
 bc <- RmaBackgroundCorrection(cs)
@@ -56,21 +56,23 @@ print(qn)
 
 # run quantile normalization
 csN <- process(qn, verbose=verbose)
-print(csN)
+#print(csN)
 
 # fit the RMA probe level model (PLM)
 plm <- RmaPlm(csN)
-print(plm)
+#print(plm)
 
 # actually fit the PLM to all of the data
 fit(plm, verbose=verbose)
 
 # extract the estimates
 ces <- getChipEffectSet(plm)
+
+# create a data frame of intensity values
 gExprs <- extractDataFrame(ces, addNames=TRUE)
-head(gExprs)
-head(rownames(gExprs))
-head(colnames(gExprs))
+#head(gExprs)
+#head(rownames(gExprs))
+#head(colnames(gExprs))
 
 # save the normalized linear expression data to a RData file
 exportFile <- paste("results/normalizedLinear_RMA", celSet, sep="_")
@@ -98,8 +100,16 @@ pdf(file=exportFile)
 plotRle(qam)
 dev.off()
 
+# create a matrix of intensity values
+gExprsMatrix <- extractMatrix(ces)
+
 # perform log transformation
-gExprsLog <- log2(gExprs + 1)
+gExprsMatrixLog <- log2(gExprsMatrix)
+
+# convert to a data frame
+gExprsLog <- as.data.frame(gExprsMatrixLog)
+rownames(gExprsLog) <- rownames(gExprs)
+colnames(gExprsLog) <- colnames(gExprs)
 
 # write normalized log transformed expression to csv file
 exportFile <- paste("results/normalizedLogTransformed_RMA", celSet, sep="_")
