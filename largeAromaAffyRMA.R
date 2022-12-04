@@ -98,3 +98,10 @@ pdf(file=exportFile)
 plotRle(qam)
 dev.off()
 
+# perform log transformation
+gExprsLog <- log2(gExprs + 1)
+
+# write normalized log transformed expression to csv file
+exportFile <- paste("results/normalizedLogTransformed_RMA", celSet, sep="_")
+exportFile <- paste(exportFile, "csv", sep=".")
+write.csv(gExprsLog, file=exportFile, row.names=FALSE)
