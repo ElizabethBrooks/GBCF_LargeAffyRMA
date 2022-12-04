@@ -44,7 +44,10 @@ cut -d "," -f 1 $linearData > $tmpLinear
 
 # add row names to the log transformed data file
 logData="normalizedLogTransformed_RMA_"$celSet".csv"
-paste -d , $tmpLinear $logData
+tmpLog="tmp_normalizedLogTransformed_RMA_"$celSet".csv"
+paste -d , $tmpLinear $logData > $tmpLog
+mv $tmpLog $logData
 
 # clean up
 rm $tmpLinear
+rm $tmpLog
