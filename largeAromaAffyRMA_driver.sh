@@ -50,4 +50,3 @@ mv $tmpLog $logData
 
 # clean up
 rm $tmpLinear
-rm $tmpLog
