@@ -33,3 +33,15 @@ mkdir $workingDir"/results"
 
 # normalize all CEL files
 Rscript largeAromaAffyRMA.R $workingDir $chipType $celSet
+
+# retrieve row names
+linearData="results/normalizedLinear_RMA_"$celSet".csv"
+tmpLinear="results/tmp_normalizedLinear_RMA_"$celSet".csv"
+cut -d "," -f 1 $linearData > $tmpLinear
+
+# add row names to the log transformed data file
+logData="results/normalizedLogTransformed_RMA_"$celSet".csv"
+paste -d , $tmpLinear $logData
+
+# clean up
+rm $tmpLinear

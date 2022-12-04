@@ -112,4 +112,4 @@ gExprsLog <- as.data.frame(gExprsMatrixLog)
 # write normalized log transformed expression to csv file
 exportFile <- paste("results/normalizedLogTransformed_RMA", celSet, sep="_")
 exportFile <- paste(exportFile, "csv", sep=".")
-write.csv(gExprsLog, file=exportFile, row.names=TRUE)
+write.csv(gExprsLog, file=exportFile, row.names=FALSE)
