@@ -19,7 +19,7 @@ celPath="$2"
 celSet="$3"
 
 # set CEL data dir name
-celDir=$celSet"_CEL"
+celDir=$celSet
 
 # create data directory
 mkdir $celPath"/"$celDir

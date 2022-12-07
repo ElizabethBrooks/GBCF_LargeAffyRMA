@@ -2,7 +2,7 @@
 
 # script to RMA normalize newer affymetrix array data
 # usage: Rscript largeAromaAffyRMA.R workingDir chipType celSet
-# usage ex: Rscript largeAromaAffyRMA.R /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy HTA-2_0 GSE8888n_4_5_6_CEL
+# usage ex: Rscript largeAromaAffyRMA.R /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy HTA-2_0 GSE8888n_4_5_6
 
 # retrieve input file name of gene counts
 args = commandArgs(trailingOnly=TRUE)
@@ -42,7 +42,7 @@ cdf <- AffymetrixCdfFile$byChipType(chipType, tags=c("r1", "gene"))
 
 # define CEL set
 celSet <- args[3]
-#celSet <- "GSE8888n_4_5_6_CEL"
+#celSet <- "GSE8888n_4_5_6"
 cs <- AffymetrixCelSet$byName(celSet, cdf=cdf)
 #print(cs)
 

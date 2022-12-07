@@ -5,10 +5,10 @@
 #$ -N setupCEL_aromaAffy_jobOutput
 
 # usage: qsub largeAromaAffyRMA_setupCEL.sh workingDir celPath celDir chipType
-# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /scratch365/ebrooks5 /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE8888n_4_5_6_CEL HTA-2_0
-# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88884_CEL HTA-2_0
-# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88885_CEL HTA-2_0
-# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88886_CEL HTA-2_0
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /scratch365/ebrooks5 /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE8888n_4_5_6 HTA-2_0
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88884 HTA-2_0
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88885 HTA-2_0
+# usage ex: qsub largeAromaAffyRMA_setupCEL.sh /afs/crc.nd.edu/group/genomics/SCARIF /scratch365/ebrooks5/GBCF_bioinformatics_DxTerity GSE88886 HTA-2_0
 
 # set working directory
 workingDir="$1"
