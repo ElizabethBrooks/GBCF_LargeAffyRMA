@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # BASH script to format phenotype data csv files associated with CEL files
 # usage: bash formatPhenotypeData.sh
 
