@@ -104,7 +104,7 @@ dev.off()
 gExprsMatrix <- extractMatrix(ces)
 
 # perform log transformation
-gExprsMatrixLog <- log2(gExprsMatrix)
+gExprsMatrixLog <- log2(gExprsMatrix+1)
 
 # convert to a data frame
 gExprsLog <- as.data.frame(gExprsMatrixLog)
