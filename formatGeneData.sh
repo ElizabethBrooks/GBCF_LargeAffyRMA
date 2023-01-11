@@ -3,6 +3,7 @@
 # BASH script to update affy data Ensembl transcript IDs with HGNC symbols
 # usage: bash formatGeneData.sh workingDir celSet mapFile
 # usage ex: bash formatGeneData.sh /Users/bamflappy/GBCF/DxTerity/Data/Normalized/NormalizedMerged GSE8888n_4_5_6 /Users/bamflappy/GBCF/DxTerity/Data/Annotations/HTA_2_0_HGNC_map_cleaned.csv
+# usage ex: bash formatGeneData.sh /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy/results GSE8888n_4_5_6 /Users/bamflappy/GBCF/DxTerity/Data/Annotations/HTA_2_0_HGNC_map_cleaned.csv
 
 # set inputs directory
 workingDir="$1"
@@ -10,20 +11,22 @@ workingDir="$1"
 # set CEL set
 celSet="$2"
 
+# set path to the cleaned HTA 2.0 and HGNC mapping file
+mapFile=$3
+
 # set input affy data file name
 affyDataIn=$workingDir"/normalizedLogTransformed_transcripts_"$celSet".csv"
 
 # set output affy data file name
 affyDataOut=$workingDir"/normalizedLogTransformed_genes_"$celSet".csv"
 
-# set path to the cleaned HTA 2.0 and HGNC mapping file
-mapFile="/Users/bamflappy/GBCF/DxTerity/Data/Annotations/HTA_2_0_HGNC_map_cleaned.csv"
-
 # add header to results file
 # probe,symbol,expression
 echo "probe,symbol" > $workingDir"/tmp_header1.csv"
-head -1 $affyDataIn | cut -d "," -f 2- | sed 's/"//g' > $workingDir"/tmp_header2.csv"
+head -1 $affyDataIn | cut -d "," -f 2- > $workingDir"/tmp_header2.csv"
 paste -d , $workingDir"/tmp_header1.csv" $workingDir"/tmp_header2.csv" > $affyDataOut
+# test
+paste -d , $workingDir"/tmp_header1.csv" $workingDir"/tmp_header2.csv" > $workingDir"/tmp_probeData.csv"
 
 # clean up
 rm $workingDir"/tmp_header1.csv"
@@ -32,27 +35,26 @@ rm $workingDir"/tmp_header2.csv"
 # create file to track transcripts without HGNC symbols
 exOut=$workingDir"/genes_noMapping_"$celSet".csv"
 
-# add header
+# add headers
 echo "probe" > $exOut
 
 # loop over each probe of the affy data file
-while IFS= read -r probe; do
+while read probe; do
 	# retreive transcript ID
-	trans=$(echo $probe | cut -d "," -f 1 | sed 's/"//g' | sed s'/\.hg\.1/\.hg/g')
-	transTag=$trans","
+	trans=$(echo $probe | cut -d "," -f 1 | sed 's/"//g' | sed 's/\.hg\.1/\.hg/g')
 	# retrieve transcript data
-	transData=$(echo $probe | cut -d "," -f 2- | sed 's/"//g')
+	#transData=$(echo $probe | cut -d "," -f 2- | sed 's/\-Inf/NegInf/g')
+	transData=$(echo $probe | cut -d "," -f 2-)
 	# status message
 	echo "Proccessing $trans ..."
 	# search the mapping file
-	if grep -q $transTag $mapFile; then 
+	if grep -q "^$trans," $mapFile; then 
 		# retrieve HGNC symbols for the current transcript
-   		grep $transTag $mapFile | cut -d "," -f 2 | sed '/^$/d' > $workingDir"/tmp_transIDs.csv"
-		# loop over each HGNC symbol
-		while IFS= read -r symbol; do
-			# write out the transcript ID, HGNC symbol, and expression values
-			echo $transTag$symbol","$transData >> $affyDataOut
-		done < $workingDir"/tmp_transIDs.csv"
+   		grep "^$trans," $mapFile > $workingDir"/tmp_transID_HGNC.csv"
+		# add affy data
+		sed -e "s/$/,$transData/" $workingDir"/tmp_transID_HGNC.csv" > $workingDir"/tmp_transData.csv"
+		# add the probe,symbol,data to the final file
+		cat $workingDir"/tmp_transData.csv" >> $affyDataOut
 	else
 		# output transcripts without HGNC symbols
 		echo $trans >> $exOut
@@ -63,4 +65,5 @@ done < $affyDataIn
 echo "Proccessed!"
 
 # clean up
-rm $workingDir"/tmp_transIDs.csv"
+#rm $workingDir"/tmp_transID_HGNC.csv"
+#rm $workingDir"/tmp_transData.csv"

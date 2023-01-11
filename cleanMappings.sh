@@ -10,4 +10,4 @@ mapFileIn="/Users/bamflappy/GBCF/DxTerity/Data/Annotations/HTA_2_0_HGNC_map.csv"
 mapFileOut="/Users/bamflappy/GBCF/DxTerity/Data/Annotations/HTA_2_0_HGNC_map_cleaned.csv"
 
 # clean map file by removing " characters
-cat $mapFileIn | sed 's/"//g' > $mapFileOut 
+cat $mapFileIn | sed '/""/d' | sed 's/"//g' > $mapFileOut 

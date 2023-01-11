@@ -75,26 +75,26 @@ gExprs <- extractDataFrame(ces, addNames=TRUE)
 #head(colnames(gExprs))
 
 # save the normalized linear expression data to a RData file
-exportFile <- paste("results/normalizedOriginalIntensityScale_RMA", celSet, sep="_")
+exportFile <- paste("results/normalizedOriginalIntensityScale_transcripts", celSet, sep="_")
 exportFile <- paste(exportFile, "RData", sep=".")
 save(gExprs, file=exportFile)
 
 # write normalized linear expression to csv file
-exportFile <- paste("results/normalizedLinear_RMA", celSet, sep="_")
+exportFile <- paste("results/normalizedOriginalIntensityScale_transcripts", celSet, sep="_")
 exportFile <- paste(exportFile, "csv", sep=".")
 write.csv(gExprs, file=exportFile, row.names=FALSE)
 
 # examine NUSE and RLE plots
 qam <- QualityAssessmentModel(plm)
 # NUSE
-exportFile <- paste("results/plmFit_NUSE_RMA", celSet, sep="_")
+exportFile <- paste("results/plmFit_NUSE_transcripts", celSet, sep="_")
 exportFile <- paste(exportFile, "pdf", sep=".")
 pdf(file=exportFile)
 plotNuse(qam)
 dev.off()
 
 # RLE
-exportFile <- paste("results/plmFit_RLE_RMA", celSet, sep="_")
+exportFile <- paste("results/plmFit_RLE_transcripts", celSet, sep="_")
 exportFile <- paste(exportFile, "pdf", sep=".")
 pdf(file=exportFile)
 plotRle(qam)
@@ -110,6 +110,6 @@ gExprsMatrixLog <- log2(gExprsMatrix+1)
 gExprsLog <- as.data.frame(gExprsMatrixLog)
 
 # write normalized log transformed expression to csv file
-exportFile <- paste("results/normalizedLogTransformed_RMA", celSet, sep="_")
+exportFile <- paste("results/normalizedLogTransformed_transcripts", celSet, sep="_")
 exportFile <- paste(exportFile, "csv", sep=".")
 write.csv(gExprsLog, file=exportFile, row.names=FALSE)
