@@ -3,7 +3,8 @@
 # BASH script to update affy data Ensembl transcript IDs with HGNC symbols
 # usage: bash formatGeneData.sh workingDir celSet mapFile
 # usage ex: bash formatGeneData.sh /Users/bamflappy/GBCF/DxTerity/Data/Normalized/NormalizedMerged GSE8888n_4_5_6 /Users/bamflappy/GBCF/DxTerity/Data/Annotations/HTA_2_0_HGNC_map_cleaned.csv
-# usage ex: bash formatGeneData.sh /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy/results GSE8888n_4_5_6 /Users/bamflappy/GBCF/DxTerity/Data/Annotations/HTA_2_0_HGNC_map_cleaned.csv
+# usage ex: bash formatGeneData.sh /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy/results GSE8888n_4_5_6 /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/rma_aromaAffy/results/HTA_2_0_HGNC_map_cleaned.csv
+# usage ex: bash formatGeneData.sh /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/Data/Normalized/NormalizedMerged/ GSE8888n_4_5_6 /afs/crc.nd.edu/group/genomics/Mando/GBCF_bioinformatics_DxTerity_combined/Data/Annotations/HTA_2_0_HGNC_map_cleaned.csv
 
 # set inputs directory
 workingDir="$1"
@@ -65,5 +66,5 @@ done < $affyDataIn
 echo "Proccessed!"
 
 # clean up
-#rm $workingDir"/tmp_transID_HGNC.csv"
-#rm $workingDir"/tmp_transData.csv"
+rm $workingDir"/tmp_transID_HGNC.csv"
+rm $workingDir"/tmp_transData.csv"

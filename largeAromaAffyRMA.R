@@ -75,9 +75,9 @@ gExprs <- extractDataFrame(ces, addNames=TRUE)
 #head(colnames(gExprs))
 
 # save the normalized linear expression data to a RData file
-exportFile <- paste("results/normalizedOriginalIntensityScale_transcripts", celSet, sep="_")
-exportFile <- paste(exportFile, "RData", sep=".")
-save(gExprs, file=exportFile)
+#exportFile <- paste("results/normalizedOriginalIntensityScale_transcripts", celSet, sep="_")
+#exportFile <- paste(exportFile, "RData", sep=".")
+#save(gExprs, file=exportFile)
 
 # write normalized linear expression to csv file
 exportFile <- paste("results/normalizedOriginalIntensityScale_transcripts", celSet, sep="_")
