@@ -34,7 +34,7 @@ rm $workingDir"/tmp_header1.csv"
 rm $workingDir"/tmp_header2.csv"
 
 # create file to track transcripts without HGNC symbols
-exOut=$workingDir"/normalizedLogTransformed_genes_noMapping_"$celSet".csv"
+exOut=$workingDir"/normalizedLogTransformed_transcripts_noMapping_"$celSet".csv"
 
 # add headers
 echo "probe" > $exOut
